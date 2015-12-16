@@ -1,0 +1,23 @@
+<div class="note-area" ng-show="!editMode">
+	<table>
+		<tr ng-repeat="note in notes|orderBy:'id'">
+			<td width="100%">
+ 				<a href="#" ng-click="openEditor(note.id)" class='notetext'>{{note.title}}</a>
+ 				<br/>
+			</td>
+			<td>
+				<button ng-click="delete(note.id)" class='deletebutton'>Delete</button>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="editor" ng-show="editMode" class="note-area" contenteditable="true" ng-bind="noteText"></div>
+
+<span>
+	<a href="#" ng-click="save()" ng-show="editMode">Save</a>
+</span>
+
+<span>
+	<a href="#" ng-click="openEditor()" ng-show="!editMode">Add Note</a>
+</span>
