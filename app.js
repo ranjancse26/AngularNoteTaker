@@ -20,8 +20,6 @@ app.directive('notepad', function(notesFactory) {
           note.title = scope.noteText.length > 50 ? scope.noteText.substring(0, 50) + '. . .' : scope.noteText;
           note.content = scope.noteText;
 
-          console.log('index:'+scope.index);
-
           if(scope.index == undefined)
           {
               if(localStorage.length > 0)
@@ -32,8 +30,6 @@ app.directive('notepad', function(notesFactory) {
               else{
                  note.id = 1;
               }
-
-              console.log('note id:'+ note.id);
           }
           else{
              note.id =  scope.index;
@@ -45,7 +41,6 @@ app.directive('notepad', function(notesFactory) {
       };
 
       scope.delete = function(index){
-        console.log('Delete Index'+ index);
         var status = confirm('Do you want to Delete?');
         if(status)
           scope.notes = notesFactory.deleteById(index);
